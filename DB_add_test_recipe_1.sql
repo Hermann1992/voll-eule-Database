@@ -1,0 +1,3 @@
+INSERT INTO recipe (recipeId, recipeName, shortDescription, longDescription, costs) VALUES (1, 'First ExampleRecipe','Dieses Rezept dient als Beispiel', 'Hiermit können Datenbankfunktionen und der admin-Bereich getestet werden.', 1.42);
+
+INSERT INTO recipe (recipeId, recipeName, shortDescription, longDescription, costs) VALUES (2, 'Second ExampleRecipe','Dieses Rezept dient auch als Beispiel', 'Hiermit können genauso Datenbankfunktionen und der admin-Bereich getestet werden.', 2.42);
