@@ -23,23 +23,21 @@ INSERT INTO fount VALUES (1, 'Chefkoch', NULL, 'www.chefkoch.de'),
 -- Zeitkategorie --
 DROP TABLE IF EXISTS timeCategory;
 CREATE TABLE timeCategory (timeCategoryId INT PRIMARY KEY,
-                           upperlimit INT,
+                           upperLimit INT,
                            timeCatName CHAR(16));
-INSERT INTO timeCategory VALUES  (1, NULL, 'unbekannt')
-                                 (2, 30, 'schnell'),
-                                 (3, 60, 'mittel'),
-                                 (4, 90, 'aufwändig'),
-                                 (5, 120, 'sehr aufwändig');
+INSERT INTO timeCategory VALUES (1, 15, 'schnell'),
+                                 (2, 30, 'mittel'),
+                                 (3, 60, 'aufwändig'),
+                                 (4, NULL, 'sehr aufwändig');
 -- Kostenkategorie --
 DROP TABLE IF EXISTS costCategory;
 CREATE TABLE costCategory(costCategoryId INT PRIMARY KEY,
                    upperLimit INT,
                    costCatName CHAR(10));
-INSERT INTO costCategory VALUES (1, NULL, 'unbekannt'),
-                                (2, 5, 'günstig'),
-                                (3, 10, 'mittel'),
-                                (4, 15, 'teuer'),
-                                (5, 25, 'Wegelagerei');
+INSERT INTO costCategory (costCategoryId, upperLimit, costCatName) VALUES (1, 5, 'günstig'),
+                                 (2, 15, 'mittel'),
+                                 (3, 25, 'teuer'),
+                                 (4, NULL, 'Wucher!');
 -- Schwierigkeitsgrad --
 DROP TABLE IF EXISTS difficultyLevel;
 CREATE TABLE difficultyLevel(difficultyLevelId INT PRIMARY KEY,
@@ -106,12 +104,12 @@ DROP TABLE IF EXISTS recipe;
 CREATE TABLE recipe(recipeId INT PRIMARY KEY AUTO_INCREMENT,
                     categoryId_fk INT,
                     fountId_fk INT,
+                    timeRequired INT,
                     difficultyLevelId_fk INT,
                     recipeName CHAR(32),
                     shortDescription TEXT,
                     longDescription TEXT,
                     costs FLOAT,
-                    timeRequired INT,
            FOREIGN KEY(categoryId_fk) REFERENCES category(categoryId),
            FOREIGN KEY(fountId_fk) REFERENCES fount(fountId),
            FOREIGN KEY(difficultyLevelId_fk) REFERENCES difficultyLevel(difficultyLevelId));
